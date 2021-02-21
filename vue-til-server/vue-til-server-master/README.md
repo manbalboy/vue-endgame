@@ -15,6 +15,7 @@
 만약 이미 다른 버전의 Node.js를 사용하는 분들은 [NVM(Node Version Manager)](https://github.com/nvm-sh/nvm)을 이용하여 Node.js 버전을 맞춰주시면 됩니다.
 
 ### 설치 절차
+0. window 사용자는 https://github.com/coreybutler/nvm-windows/releases 들어가 nvm-setup.zip 을 다운받아 설치하여 사용한다.
 
 1. VSCode의 내장 터미널을 `bash`로 실행하고 아래 명령어를 입력합니다.
 

@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import detectPort from 'detect-port';
 import chalk from 'chalk';
+require('dotenv').config();
 
 // api
 import auth from './api/auth.js';
@@ -19,7 +20,7 @@ import { authenticateUser } from './utils/auth.js';
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 mongoose.connect(
-  'mongodb+srv://manbalboy:password@cluster0.ss9n0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  `mongodb+srv://manbalboy:${process.env.DB_PASS}@cluster0.ss9n0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
   },

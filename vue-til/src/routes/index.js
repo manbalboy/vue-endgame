@@ -18,5 +18,10 @@ export default new VueRouter({
             path: '/signup',
             component: () => import('@/views/SignupPage.vue'),
         },
+        {
+            // 등록되지 않은 페이지 등록
+            path: '*',
+            component: () => import('@/views/NotFoundPage.vue'),
+        },
     ],
 });

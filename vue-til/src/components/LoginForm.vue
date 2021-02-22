@@ -25,15 +25,19 @@ export default {
     },
     methods: {
         async submitForm() {
-            const userData = {
-                password: this.password,
-                username: this.username,
-            };
-            const { data } = await loginUser(userData);
-            console.log(data);
+            try {
+                const userData = {
+                    password: this.password,
+                    username: this.username,
+                };
+                const { data } = await loginUser(userData);
+                console.log(data);
 
-            this.logMessage = `${data.user.username} 님 환영합니다.`;
-            this.initForm();
+                this.logMessage = `${data.user.username} 님 환영합니다.`;
+                this.initForm();
+            } catch (error) {
+                this.logMessage = 'error 발생하였습니다. 로그인을 확인해주세요';
+            }
         },
         initForm() {
             this.username = '';

@@ -21,3 +21,4 @@ yarn-error.log*
 *.sln
 *.sw?
 ./vue-endgame/app.js
+vue-til-server/src/app.js

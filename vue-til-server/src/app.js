@@ -19,7 +19,7 @@ import { authenticateUser } from './utils/auth.js';
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 mongoose.connect(
-  'mongodb+srv://manbalboy:3wkdqjq4^^@cluster0.ss9n0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  'mongodb+srv://manbalboy:password@cluster0.ss9n0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
   },

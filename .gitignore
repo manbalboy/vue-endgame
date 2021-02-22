@@ -20,4 +20,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-#./vue-endgame/app.js
+./vue-endgame/app.js

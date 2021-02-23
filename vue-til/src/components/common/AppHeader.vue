@@ -7,7 +7,7 @@
             </router-link>
         </div>
         <div class="navigations">
-            <template v-if="isUserLogind">
+            <template v-if="isUserLogin">
                 <span class="username">{{ getUsername }}</span>
                 <a
                     href="javascript:;"
@@ -41,7 +41,7 @@ export default {
         signupUrl() {
             return this.baseUrl + '/signup';
         },
-        isUserLogind() {
+        isUserLogin() {
             return this.$store.getters.isLogin;
         },
         getUsername() {

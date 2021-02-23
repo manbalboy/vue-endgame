@@ -29,7 +29,7 @@
 export default {
     data() {
         return {
-            baseUrl: process.env.VUE_APP_BASE_URL || '/',
+            baseUrl: process.env.VUE_APP_BASE_URL,
         };
     },
     computed: {

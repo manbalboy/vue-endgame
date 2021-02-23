@@ -28,6 +28,10 @@ export default new VueRouter({
             component: () => import('@/views/PostAddPage.vue'),
         },
         {
+            path: `${process.env.VUE_APP_BASE_URL}/post/:id`,
+            component: () => import('@/views/PostEditPage.vue'),
+        },
+        {
             // 등록되지 않은 페이지 등록
             path: `*`,
             component: () => import('@/views/NotFoundPage.vue'),

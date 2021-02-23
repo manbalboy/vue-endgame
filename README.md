@@ -22,5 +22,7 @@
 - Vue 3 Snippets
 - Vue Peek
 - Vue VSCode Snippets
+- VueHelper
+
 
 

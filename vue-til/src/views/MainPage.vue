@@ -11,6 +11,9 @@
                 ></PostListItem>
             </ul>
         </div>
+        <router-link :to="baseUrl + '/add'" class="create-button">
+            <i class="ion-md-add"></i>
+        </router-link>
     </div>
 </template>
 
@@ -23,6 +26,7 @@ export default {
         return {
             postItems: [],
             isLoading: false,
+            baseUrl: process.env.VUE_APP_BASE_URL,
         };
     },
     components: {

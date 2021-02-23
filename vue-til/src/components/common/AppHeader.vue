@@ -3,12 +3,19 @@
         <div>
             <router-link :to="baseUrl" class="logo">
                 TIL
+                <span v-if="isUserLogin">by {{ getUsername }}</span>
             </router-link>
         </div>
         <div class="navigations">
             <template v-if="isUserLogind">
                 <span class="username">{{ getUsername }}</span>
-                <a href="javascript:;" @click="logoutUser">LogOut</a>
+                <a
+                    href="javascript:;"
+                    @click="logoutUser"
+                    class="logout-button"
+                >
+                    Logout
+                </a>
             </template>
 
             <template v-else>
@@ -83,6 +90,9 @@ a.logo {
     position: fixed;
     top: 0;
     width: 100%;
+}
+.logout-button {
+    font-size: 14px;
 }
 a.router-link-exact-active {
     color: white;

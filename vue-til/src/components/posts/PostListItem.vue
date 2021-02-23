@@ -7,7 +7,7 @@
             {{ postItem.contents }}
         </div>
         <div class="post-time">
-            {{ postItem.createdAt | formatData }}
+            {{ postItem.createdAt | formatDate }}
             <i class="icon ion-md-create" @click="routeEditPage"></i>
             <i class="icon ion-md-trash" @click="deleteItem"></i>
         </div>

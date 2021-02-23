@@ -46,11 +46,11 @@ export default {
     methods: {
         async submitForm() {
             try {
-                const response = await createPosts({
+                await createPosts({
                     title: this.title,
                     contents: this.contents,
                 });
-                console.log(response);
+                this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
             } catch (error) {
                 this.logMessage = error.response.data.message;
             }

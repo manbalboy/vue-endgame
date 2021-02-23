@@ -11,4 +11,9 @@ function createPosts(postData) {
     return posts.post('/', postData);
 }
 
-export { fetchPosts, createPosts };
+// 학습노트를 삭제하는 API
+function deletePosts(postId) {
+    return posts.delete(postId);
+}
+
+export { fetchPosts, createPosts, deletePosts };

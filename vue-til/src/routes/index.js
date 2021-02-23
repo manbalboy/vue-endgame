@@ -21,7 +21,7 @@ export default new VueRouter({
         },
         {
             path: `${process.env.VUE_APP_BASE_URL}/main`,
-            component: () => import('@/views/SignupPage.vue'),
+            component: () => import('@/views/MainPage.vue'),
         },
         {
             // 등록되지 않은 페이지 등록

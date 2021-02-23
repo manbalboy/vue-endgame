@@ -8,7 +8,6 @@
         </div>
         <div class="navigations">
             <template v-if="isUserLogin">
-                <span class="username">{{ getUsername }}</span>
                 <a
                     href="javascript:;"
                     @click="logoutUser"

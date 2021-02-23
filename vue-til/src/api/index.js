@@ -2,33 +2,18 @@ import axios from 'axios';
 import { setInterceptors } from './common/interceptors';
 // 엑시오스 초기화 함수
 function createInstance() {
-    const instance = axios.create({
+    return axios.create({
         baseURL: process.env.VUE_APP_API_URL,
+    });
+}
+
+function createInstanceWihtAuth(url) {
+    const instance = axios.create({
+        baseURL: `${process.env.VUE_APP_API_URL}${url}`,
     });
 
     return setInterceptors(instance);
 }
 
-const instance = createInstance();
-
-// 회원가입 API
-function registerUser(userData) {
-    return instance.post('signup', userData);
-}
-
-// 로그인 API
-function loginUser(userData) {
-    return instance.post('login', userData);
-}
-
-// 학습노트 데이터를 조회하는 API
-function fetchPosts() {
-    return instance.get('posts');
-}
-
-// 학습노트를 생성하는 API
-function createPosts(postData) {
-    return instance.post('posts', postData);
-}
-
-export { registerUser, loginUser, fetchPosts, createPosts };
+export const instance = createInstance();
+export const posts = createInstanceWihtAuth('posts');

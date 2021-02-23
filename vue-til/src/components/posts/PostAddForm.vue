@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { createPosts } from '@/api/index';
+import { createPosts } from '@/api/posts';
 export default {
     data() {
         return {

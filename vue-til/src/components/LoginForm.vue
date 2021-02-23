@@ -56,7 +56,7 @@ export default {
                     username: this.username,
                     password: this.password,
                 };
-                this.$store.dispatch('LOGIN', userData);
+                await this.$store.dispatch('LOGIN', userData);
                 this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
             } catch (error) {
                 console.log(error.response.data);

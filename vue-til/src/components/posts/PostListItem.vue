@@ -23,11 +23,11 @@ export default {
             required: true,
         },
     },
-    filters: {
-        formatData(value) {
-            return new Date(value);
-        },
-    },
+    // filters: {
+    //     formatData(value) {
+    //         return new Date(value);
+    //     },
+    // },
     methods: {
         async deleteItem() {
             try {

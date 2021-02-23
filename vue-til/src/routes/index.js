@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '@/store/index';
 
 Vue.use(VueRouter);
 
@@ -22,14 +23,23 @@ const router = new VueRouter({
         {
             path: `${process.env.VUE_APP_BASE_URL}/main`,
             component: () => import('@/views/MainPage.vue'),
+            meta: {
+                auth: true,
+            },
         },
         {
             path: `${process.env.VUE_APP_BASE_URL}/add`,
             component: () => import('@/views/PostAddPage.vue'),
+            meta: {
+                auth: true,
+            },
         },
         {
             path: `${process.env.VUE_APP_BASE_URL}/post/:id`,
             component: () => import('@/views/PostEditPage.vue'),
+            meta: {
+                auth: true,
+            },
         },
         {
             // 등록되지 않은 페이지 등록
@@ -38,7 +48,14 @@ const router = new VueRouter({
         },
     ],
 });
+
 router.beforeEach((to, from, next) => {
-    console.log(to, from, next);
+    if (to.meta.auth && !store.getters.isLogin) {
+        console.log('인증이 필요합니다. ');
+
+        next(`${process.env.VUE_APP_BASE_URL}/login`);
+        return;
+    }
+    next();
 });
 export default router;

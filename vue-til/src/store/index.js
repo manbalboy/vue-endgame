@@ -46,5 +46,8 @@ export default new Vuex.Store({
         setToken(state, token) {
             state.token = token;
         },
+        clearToke(state) {
+            state.token = '';
+        },
     },
 });

@@ -1,7 +1,7 @@
 <template>
     <header>
         <div>
-            <router-link :to="baseUrl" class="logo">
+            <router-link :to="logLink" class="logo">
                 TIL
                 <span v-if="isUserLogin">by {{ getUsername }}</span>
             </router-link>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { deleteCookie } from '@/utils/cookies';
 export default {
     data() {
         return {
@@ -33,6 +34,11 @@ export default {
         };
     },
     computed: {
+        logLink() {
+            return this.$store.getters.isLogin
+                ? `${this.baseUrl}/main`
+                : `${this.baseUrl}/login`;
+        },
         loginUrl() {
             return this.baseUrl + '/login';
         },
@@ -50,7 +56,10 @@ export default {
     methods: {
         logoutUser() {
             this.$store.commit('clearUsername');
-            this.$router.push(`${process.env.VUE_APP_BASE_URL}/`);
+            this.$store.commit('clearToke');
+            deleteCookie('til_auth');
+            deleteCookie('til_user');
+            this.$router.push(`${process.env.VUE_APP_BASE_URL}/login`);
         },
     },
 };

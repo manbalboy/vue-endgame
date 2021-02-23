@@ -8,6 +8,7 @@
                     v-for="postItem in postItems"
                     v-bind:key="postItem._id"
                     :postItem="postItem"
+                    @refresh="fetchData"
                 ></PostListItem>
             </ul>
         </div>
@@ -38,7 +39,6 @@ export default {
             this.isLoading = true;
             const { data } = await fetchPosts();
             this.isLoading = false;
-            console.log('response >>>>> ', data);
             this.postItems = data.posts;
         },
     },

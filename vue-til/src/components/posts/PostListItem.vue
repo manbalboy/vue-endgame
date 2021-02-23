@@ -25,8 +25,14 @@ export default {
     },
     methods: {
         async deleteItem() {
-            console.log('delete');
-            await deletePosts(this.postItem._id);
+            try {
+                if (confirm('삭제하시겠습니까?')) {
+                    await deletePosts(this.postItem._id);
+                    this.$emit('refresh');
+                }
+            } catch (error) {
+                console.log(error);
+            }
         },
     },
 };

@@ -59,9 +59,11 @@ export default {
                     password: this.password,
                 };
                 const { data } = await loginUser(userData);
-                // <router-lick>
                 console.log(data.user.username);
+                this.$store.commit('setUsername', data.user.username);
+                // <router-link> 같음
                 this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
+
                 // this.logMessage = `${data.user.username} 님 환영합니다`;
                 // this.initForm();
             } catch (error) {

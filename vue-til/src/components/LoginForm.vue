@@ -59,8 +59,10 @@ export default {
                     password: this.password,
                 };
                 const { data } = await loginUser(userData);
+                // <router-lick>
                 console.log(data.user.username);
-                this.logMessage = `${data.user.username} 님 환영합니다`;
+                this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
+                // this.logMessage = `${data.user.username} 님 환영합니다`;
                 // this.initForm();
             } catch (error) {
                 // 에러 핸들링할 코드

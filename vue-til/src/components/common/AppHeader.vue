@@ -8,6 +8,7 @@
         <div class="navigations">
             <template v-if="isUserLogind">
                 <span class="username">{{ getUsername }}</span>
+                <a href="javascript:;" @click="logoutUser">LogOut</a>
             </template>
 
             <template v-else>
@@ -22,7 +23,7 @@
 export default {
     data() {
         return {
-            baseUrl: process.env.VUE_APP_BASE_URL,
+            baseUrl: process.env.VUE_APP_BASE_URL || '/',
         };
     },
     computed: {
@@ -38,6 +39,12 @@ export default {
         },
         getUsername() {
             return this.$store.state.username;
+        },
+    },
+    methods: {
+        logoutUser() {
+            this.$store.commit('clearUsername');
+            this.$router.push(`${process.env.VUE_APP_BASE_URL}/`);
         },
     },
 };

@@ -6,9 +6,14 @@
             </router-link>
         </div>
         <div class="navigations">
-            <span>{{ $store.state.username }}</span>
-            <router-link :to="loginUrl">로그인</router-link>
-            <router-link :to="signupUrl">회원가입</router-link>
+            <template v-if="isUserLogind">
+                <span class="username">{{ getUsername }}</span>
+            </template>
+
+            <template v-else>
+                <router-link :to="loginUrl">로그인</router-link>
+                <router-link :to="signupUrl">회원가입</router-link>
+            </template>
         </div>
     </header>
 </template>
@@ -28,11 +33,20 @@ export default {
         signupUrl() {
             return this.baseUrl + '/signup';
         },
+        isUserLogind() {
+            return this.$store.getters.isLogin;
+        },
+        getUsername() {
+            return this.$store.state.username;
+        },
     },
 };
 </script>
 
 <style scoped>
+.username {
+    color: white;
+}
 header {
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,5 @@
 <template>
-    <div class="form-container">
+    <div class="main form-container">
         <PostAddForm></PostAddForm>
     </div>
 </template>

@@ -3,4 +3,8 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-export { validateEmail };
+function validatePassword(value) {
+    return value.length >= 8;
+}
+
+export { validateEmail, validatePassword };

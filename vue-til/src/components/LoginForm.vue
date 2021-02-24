@@ -59,7 +59,6 @@ export default {
                 await this.$store.dispatch('LOGIN', userData);
                 this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
             } catch (error) {
-                console.log(error.response.data);
                 this.logMessage = error.response.data;
             } finally {
                 this.initForm();

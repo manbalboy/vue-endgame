@@ -1,11 +1,9 @@
 <template>
     <footer>
-        <a
-            href="https://github.com/joshua1988/vue-til/tree/complete"
-            target="_blank"
-            >View GitHub source</a
-        >
-        <div>© 2019 Captain Pangyo</div>
+        <a href="https://github.com/manbalboy/profile" target="_blank">
+            View GitHub profile
+        </a>
+        <div>© 2021 manbalboy</div>
     </footer>
 </template>
 

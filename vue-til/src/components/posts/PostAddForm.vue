@@ -30,6 +30,8 @@
 
 <script>
 import { createPosts } from '@/api/posts';
+
+import bus from '@/utils/bus.js';
 export default {
     data() {
         return {
@@ -46,10 +48,14 @@ export default {
     methods: {
         async submitForm() {
             try {
-                await createPosts({
+                const response = await createPosts({
                     title: this.title,
                     contents: this.contents,
                 });
+                bus.$emit(
+                    'show:toast',
+                    `${response.data.data.title} was created`,
+                );
                 this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
             } catch (error) {
                 this.logMessage = error.response.data.message;

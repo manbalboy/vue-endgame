@@ -16,6 +16,7 @@
 
 <script>
 import { deletePosts } from '@/api/posts';
+import bus from '@/utils/bus.js';
 export default {
     props: {
         postItem: {
@@ -32,8 +33,12 @@ export default {
         async deleteItem() {
             try {
                 if (confirm('삭제하시겠습니까?')) {
-                    await deletePosts(this.postItem._id);
+                    const response = await deletePosts(this.postItem._id);
                     this.$emit('refresh');
+                    bus.$emit(
+                        'show:toast',
+                        `${response.data.title} was deleted`,
+                    );
                 }
             } catch (error) {
                 console.log(error);

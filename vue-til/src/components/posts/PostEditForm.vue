@@ -19,7 +19,14 @@
                         Contents must be less than 200
                     </p>
                 </div>
-                <button type="submit" class="btn">Edit</button>
+                <button
+                    type="submit"
+                    class="btn"
+                    :class="isButtonDisabled"
+                    :disabled="isButtonDisabled"
+                >
+                    Edit
+                </button>
             </form>
             <p class="log">
                 {{ logMessage }}
@@ -30,6 +37,7 @@
 
 <script>
 import { fetchPost, editPost } from '@/api/posts';
+import bus from '@/utils/bus.js';
 export default {
     data() {
         return {
@@ -42,16 +50,22 @@ export default {
         isContentsValid() {
             return this.contents.length < 200;
         },
+        isButtonDisabled() {
+            return !this.title || !this.contents || this.isContentsValid()
+                ? 'disabled'
+                : null;
+        },
     },
     methods: {
         async submitForm() {
             const id = this.$route.params.id;
 
             try {
-                await editPost(id, {
+                const response = await editPost(id, {
                     title: this.title,
                     contents: this.contents,
                 });
+                bus.$emit('show:toast', `${response.data.title} was editted`);
                 this.$router.push(`${process.env.VUE_APP_BASE_URL}/main`);
             } catch (error) {
                 this.logMessage = error;
@@ -64,7 +78,6 @@ export default {
             const response = await fetchPost(id);
             this.title = response.data.title;
             this.contents = response.data.contents;
-            console.log(response);
         } catch (error) {
             this.logMessage = error;
         }

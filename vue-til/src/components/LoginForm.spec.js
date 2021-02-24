@@ -14,7 +14,7 @@ describe('LoginForm.vue', () => {
         //find 는 템플릿 안에 있는 html 요소를 찾아갈수있음
         const usernameInput = wrapper.find('#username');
         console.log('usernameInput >>>>> ', usernameInput.html());
-        console.log('usernameInput >>>>> ', usernameInput.element.value);
+        console.log('인풋박스 값 >>>>> ', usernameInput.element.value);
         console.log('usernameInput >>>>> ', usernameInput.element);
         console.log(usernameInput);
     });
